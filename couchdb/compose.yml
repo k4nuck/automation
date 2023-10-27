@@ -1,0 +1,13 @@
+version: '3'
+services:
+  couchserver:
+    image: couchdb:2.1
+    restart: unless-stopped
+    ports:
+      - "5984:5984"
+    volumes:
+      - cdb_data:/opt/couchdb/data
+
+volumes:
+  cdb_data:
+    external: true

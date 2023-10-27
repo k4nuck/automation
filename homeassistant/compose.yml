@@ -1,0 +1,22 @@
+version: '3'
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+#    auth_providers:
+#    - type: trusted_networks
+#      trusted_networks:
+#      - 127.0.0.1/32
+#      - 100.0.0.0/8
+    ports:
+      - "8123:8123"
+    volumes:
+      - ha_config:/config
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    privileged: true
+#    network_mode: host
+
+volumes:
+  ha_config:
+    external: true
