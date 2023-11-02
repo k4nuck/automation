@@ -1,0 +1,13 @@
+[Unit]
+Description=Smartpump Service
+After=network.target docker.service virtualbox.service
+
+[Service]
+User=k4nuck
+Restart=always
+Type=simple
+WorkingDirectory=/home/k4nuck/projects/smartpump
+ExecStart=/home/k4nuck/.local/bin/pipenv run python /home/k4nuck/projects/smartpump/main.py
+
+[Install]
+WantedBy=multi-user.target
